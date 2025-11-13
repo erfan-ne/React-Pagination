@@ -5,15 +5,15 @@ import Pagination from "react-bootstrap/Pagination";
 
 export default function TodosTable() {
   const [todos, setTodos] = useState([]);
-  const [currentPage, setCurrentPage] = useState([1]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [todosPerPage, setTodosPerPage] = useState([]);
 
   const showTodosPerPage = 20;
   const numberOfPages = Math.ceil(todos.length / showTodosPerPage);
   let paginationItems = [];
-  for (let number = currentPage ; number <= numberOfPages; number++) {
+  for (let number = 1 ; number <= numberOfPages; number++) {
     paginationItems.push(
-      <Pagination.Item key={number} active={number === currentPage}>
+      <Pagination.Item key={number} value={number} active={number === currentPage} onClick={() => setCurrentPage(number)}>
         {number}
       </Pagination.Item>
     );
