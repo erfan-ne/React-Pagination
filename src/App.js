@@ -1,12 +1,11 @@
-
-import { useState } from 'react';
 import './App.css';
+import Table from './Table';
 
 function App() {
-  const [todos, setTodos] = useState([])
+
   return (
     <div className="App">
-      <p>hi</p>
+      <Table />
     </div>
   );
 }
