@@ -21,17 +21,16 @@ export default function TodosTable() {
     );
   }
 
-  // const showPerPage = () => {
-  //   todos.map(todo => )
-  // }
-
-
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then((Response) => Response.json())
-      .then((todosData) => setTodos(todosData));
-  }, []);
+      .then((todosData) => {setTodos(todosData);
+      let endIndex = showTodosPerPage * currentPage
+      let startIndex = endIndex - showTodosPerPage
+      setTodosPerPage(todosData.slice(startIndex, endIndex))        
+      })
+  }, [currentPage])
 
   return (
     <>
@@ -45,7 +44,7 @@ export default function TodosTable() {
           </tr>
         </thead>
         <tbody>
-          {todos.map((todo) => (
+          {todosPerPage.map((todo) => (
             <tr key={todo.id}>
               <td>{todo.id}</td>
               <td>{todo.userId}</td>
