@@ -10,20 +10,22 @@ export default function TodosTable() {
 
   const showTodosPerPage = 20;
   const numberOfPages = Math.ceil(todos.length / showTodosPerPage);
+
+
   let paginationItems = [];
   for (let number = 1 ; number <= numberOfPages; number++) {
     paginationItems.push(
-      <Pagination.Item key={number} value={number} active={number === currentPage} onClick={() => setCurrentPage(number)}>
+      <Pagination.Item key={number} active={number === currentPage} onClick={() => setCurrentPage(number)}>
         {number}
       </Pagination.Item>
     );
   }
 
-  console.log(numberOfPages);
-
   // const showPerPage = () => {
   //   todos.map(todo => )
   // }
+
+
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
@@ -33,7 +35,7 @@ export default function TodosTable() {
 
   return (
     <>
-      {/* <Table striped bordered hover>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -58,9 +60,9 @@ export default function TodosTable() {
             </tr>
           ))}
         </tbody>
-      </Table> */}
+      </Table>
 
-      <Pagination size="sm">{paginationItems}</Pagination>
+      <Pagination size="sm" className="justify-content-center">{paginationItems}</Pagination>
     </>
   );
 }
