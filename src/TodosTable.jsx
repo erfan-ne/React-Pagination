@@ -24,10 +24,10 @@ export default function TodosTable() {
         {todos.map((todo) => (
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{todo.id}</td>
+              <td>{todo.userId}</td>
+              <td>{todo.title}</td>
+              <td>{todo.completed ? "Done" : "Pending"}</td>
             </tr>
           </tbody>
         ))}
