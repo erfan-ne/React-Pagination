@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 
 export default function TodosTable() {
   const [todos, setTodos] = useState([]);
@@ -23,11 +24,11 @@ export default function TodosTable() {
         </thead>
         <tbody>
         {todos.map((todo) => (
-            <tr>
+            <tr key={todo.id}>
               <td>{todo.id}</td>
               <td>{todo.userId}</td>
               <td>{todo.title}</td>
-              <td>{todo.completed ? "Done" : "Pending"}</td>
+              <td>{todo.completed ? <Button variant="success">Done</Button> : <Button variant="warning">Pending</Button>}</td>
             </tr>
         ))}
         </tbody>
