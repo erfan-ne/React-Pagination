@@ -21,16 +21,16 @@ export default function TodosTable() {
             <th>Status</th>
           </tr>
         </thead>
+        <tbody>
         {todos.map((todo) => (
-          <tbody>
             <tr>
               <td>{todo.id}</td>
               <td>{todo.userId}</td>
               <td>{todo.title}</td>
               <td>{todo.completed ? "Done" : "Pending"}</td>
             </tr>
-          </tbody>
         ))}
+        </tbody>
       </Table>
     </>
   );
