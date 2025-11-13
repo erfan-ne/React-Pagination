@@ -1,11 +1,11 @@
 import './App.css';
-import Table from './Table';
+import TodosTable from './TodosTable';
 
 function App() {
 
   return (
     <div className="App">
-      <Table />
+      <TodosTable />
     </div>
   );
 }
