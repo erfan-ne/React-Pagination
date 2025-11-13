@@ -1,9 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
+import Pagination from "react-bootstrap/Pagination";
 
 export default function TodosTable() {
   const [todos, setTodos] = useState([]);
+  const [currentPage, setCurrentPage] = useState([1]);
+  const [todosPerPage, setTodosPerPage] = useState([]);
+
+  const showTodosPerPage = 20;
+  const numberOfPages = Math.ceil(todos.length / showTodosPerPage);
+  let paginationItems = [];
+  for (let number = currentPage ; number <= numberOfPages; number++) {
+    paginationItems.push(
+      <Pagination.Item key={number} active={number === currentPage}>
+        {number}
+      </Pagination.Item>
+    );
+  }
+
+  console.log(numberOfPages);
+
+  // const showPerPage = () => {
+  //   todos.map(todo => )
+  // }
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
@@ -13,7 +33,7 @@ export default function TodosTable() {
 
   return (
     <>
-      <Table striped bordered hover>
+      {/* <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -23,16 +43,24 @@ export default function TodosTable() {
           </tr>
         </thead>
         <tbody>
-        {todos.map((todo) => (
+          {todos.map((todo) => (
             <tr key={todo.id}>
               <td>{todo.id}</td>
               <td>{todo.userId}</td>
               <td>{todo.title}</td>
-              <td>{todo.completed ? <Button variant="success">Done</Button> : <Button variant="warning">Pending</Button>}</td>
+              <td>
+                {todo.completed ? (
+                  <Button variant="success">Done</Button>
+                ) : (
+                  <Button variant="warning">Pending</Button>
+                )}
+              </td>
             </tr>
-        ))}
+          ))}
         </tbody>
-      </Table>
+      </Table> */}
+
+      <Pagination size="sm">{paginationItems}</Pagination>
     </>
   );
 }
